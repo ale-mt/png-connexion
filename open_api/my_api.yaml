@@ -1,0 +1,221 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Connexion
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+
+  /catalogo:
+    get:
+      operationId: "catalogo.read"
+      tags:
+        - "catalogo"
+      summary: "The 'alimenti' data structure supported by the server application"
+      description: "Read the list of catalogo"
+      responses:
+        200:
+          description: "Successful read catalogo list operation"
+    post:
+      operationId: "catalogo.create"
+      tags:
+        - "catalogo"
+      summary: "Aggiungi un nuovo record dentro catalogo"
+      description: "Aggiungi un nuovo record dentro catalogo"
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: "Success"
+      parameters:
+        - in: body
+          name: alimento
+          description: "Articolo da inserire"
+          schema:
+            type: object
+            properties:
+              nome:
+                type: object
+                properties:
+                  h:
+                    type: integer
+                  l:
+                    type: integer
+                  w:
+                    type: integer
+
+  /catalogo/{id}:
+    delete:
+      operationId: "catalogo.delete"
+      summary: "Cancella un articolo"
+      tags:
+        - "catalogo"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 0
+          description: "Id dell'articolo da cancellare"
+      responses:
+        200:
+          description: "Success"
+    get:
+      operationId: "catalogo.readid"
+      summary: "Ottieni specifico catalogo da id"
+      tags:
+        - "catalogo"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 0
+          description: "Id dell'catalogo"
+      responses:
+        200:
+          description: "Successful"
+    put:
+      operationId: "catalogo.put"
+      tags:
+        - "catalogo"
+      summary: "Modifica un record dentro catalogo"
+      description: "Modifica un record dentro catalogo"
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: "Success"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 0
+          description: "Id dell'catalogo"
+        - in: body
+          name: alimento
+          description: "Articolo da modificare"
+          schema:
+            type: object
+            properties:
+              nome:
+                type: object
+                properties:
+                  h:
+                    type: integer
+                  l:
+                    type: integer
+                  w:
+                    type: integer
+
+  /persone:
+    get:
+      operationId: "persone.read"
+      tags:
+        - "Persone"
+      summary: "Persone summary"
+      description: "Leggi la lista di Persone"
+      responses:
+        200:
+          description: "Successful read Persone"
+    post:
+      operationId: "persone.post"
+      tags:
+        - "Persone"
+      summary: "Aggiungi persona"
+      description: "Metodo per aggiungere una nuova persona"
+      responses:
+        200:
+          description: "Success"
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: persona
+          description: "Persona da inserire"
+          schema:
+            type: object
+            properties:
+              nome:
+                type: object
+                properties:
+                  eta:
+                    type: integer
+                  fname:
+                    type: string
+                  lname:
+                    type: string
+
+
+  /persone/{id}:
+    get:
+      operationId: "persone.read_byid"
+      summary: "Ottieni Persone tramite id"
+      tags:
+        - "Persone"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 0
+          description: "Id del Persone"
+      responses:
+        200:
+          description: "Successfull"
+        404:
+          description: "Non trovato"
+    delete:
+      operationId: "persone.delete"
+      summary: "Cancella Persone tramite id"
+      tags:
+        - "Persone"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 0
+          description: "Id del Persone"
+      responses:
+        200:
+          description: "Successfull"
+        404:
+          description: "Non trovato"
+    put:
+      operationId: "persone.put"
+      tags:
+        - "Persone"
+      summary: "Modifica un record dentro Persone"
+      description: "Modifica un record dentro Persone"
+      consumes:
+        - application/json
+      responses:
+        200:
+          description: "Success"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+          minimum: 0
+          description: "Id della persona"
+        - in: body
+          name: persona
+          description: "Persona da modificare"
+          schema:
+            type: object
+            properties:
+              nome:
+                type: object
+                properties:
+                  eta:
+                    type: integer
+                  fname:
+                    type: string
+                  lname:
+                    type: string
