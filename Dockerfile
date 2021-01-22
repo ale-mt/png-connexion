@@ -14,6 +14,8 @@ EXPOSE 80/tcp
 
 WORKDIR /tmp/gunicorn
 
+RUN chmod -R 777 /var/log/nginx/
+
 CMD nginx && gunicorn -w 2 -b 0.0.0.0:8000 wsgi:app
 
 
